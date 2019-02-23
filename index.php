@@ -14,7 +14,7 @@
     <div class="container" style="text-align:center;">
             <h1 style="color:red;text-align:center;font-size:40px;font-family: 'Roboto+Condensed', cursive;
             word-spacing:5px;text-shadow: 3px 2px brown;border-style: dashed;border-width: 5px;">Your have problem with calculate GPA?</h1>
-            <h2>This app will help you from that!!!!</h2>  
+            <h2>This web will help you from that!!!!</h2>  
             <form class="flex-container2" action="index.php" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="name">First Name:</label>
