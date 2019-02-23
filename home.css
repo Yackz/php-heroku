@@ -1,0 +1,9 @@
+html{
+    background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);
+}
+body{
+    background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
+    width: 60%;
+	margin: 0px auto;
+	min-height: 100vh;
+}
