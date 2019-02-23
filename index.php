@@ -5,39 +5,48 @@
 <html>
 <head>
   <meta charset="utf-8">
-	<title>Calculate GPA</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="home.css">
+    <title>Calculate GPA</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">  
+    <link rel="stylesheet" href="home.css">  
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
 </head>
 <body>
-<div class="container">
-            <h1>Is your have problem with calculate GPA</h1>
+    <div class="container" style="text-align:center;">
+            <h1 style="color:red;text-align:center;font-size:40px;font-family: 'Roboto+Condensed', cursive;
+            word-spacing:5px;text-shadow: 3px 2px brown;border-style: dashed;border-width: 5px;">Is your have problem with calculate GPA</h1>
             <h2>This app will help you from that!!!!</h2>  
             <form class="flex-container2" action="index.php" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="name">First Name:</label>
-                    <input type="text" name="name" placeholder="name" aria-describedby="name">
+                    <br>
+                    <input type="text" name="name" placeholder="  Name" aria-describedby="name">
                     <small id="name" class="form-text text-muted" style="color: red;">
                         <?php echo $nameErr;?>                  
                     </small>
                 </div>
                 <div class="form-group">
                     <label for="lastname">Last Name:</label>
-                    <input type="text" name="lastname" placeholder="lastname" aria-describedby="lastname">
+                    <br>
+                    <input type="text" name="lastname" placeholder="  Lastname" aria-describedby="lastname">
                     <small id="lastname" class="form-text text-muted" style="color: red;">
                         <?php echo $lastnameErr;?>
                     </small>
                 </div>
-                <div>
+                <div class="file">
                     Image :
-                    <input type="file" name="img" id="img" accept=".jpg" ><br>
+                    <br>
+                    <input style="margin-left:22%;" type="file" name="img" id="img" accept=".jpg" ><br>
                     CSV File :
-                    <input type="file" name="csv" id="file" accept=".csv"><br>
-                    <button type="submit" name="submit">Calculate</button>
+                    <br>
+                    <input style="margin-left:22%;" type="file" name="csv" id="file" accept=".csv"><br><br>
+                    <button type="submit" name="submit" class="btn btn-success" style="width:120px;height:50px;margin-left:7%;" >Calculate</button>&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
                 </div>
+                
             </form>
+            <br>
             <form method="post" action="download.php">
-                <button type="submit" class="btn btn-success">&nbsp;Download CSV</i></button>
+                <button type="submit" class="btn btn-success"style="width:150px;height:50px;margin-left:1%;" >&nbsp;Download CSV</i></button>
             </form> 
             
         </div>
@@ -53,37 +62,47 @@
             $imgTmp = $_FILES['img']['tmp_name'];
             $imgDest = 'Data/'. 'img.jpg';
             move_uploaded_file($imgTmp, $imgDest);
-            echo '<img width = "200px" height = "200px" src="./Data/img.jpg" alt="">';
+            echo "<br>" . "<br>" . "<div style=\"text-align:center;font-size:32px;\">" . '<img width = "200px" height = "200px"  src="./Data/img.jpg" alt="">'."</div>";
             $correct = true;
             if ($_POST["name"] == ""){
-                echo "Please enter your name.". "<br>";
+                // echo '<br><br> "style = text-align:"center" font-size:"32px"" Please enter your name.' . "<br>";
+                echo "<div style=\"text-align:center;font-size:32px;\">" . ' <br> Please enter your name.' . "<br>"."</div>";
             }
             if ($_POST["lastname"] == ""){
-                echo "Please enter your surname.". "<br>";
+                echo "<div style=\"text-align:center;font-size:32px;\">" . "Please enter your surname.". "<br>" ."</div>";
+                
             }   
             elseif (($handle = fopen($fileDest, "r")) !== FALSE) {
-                echo "Welcome " . $_POST["name"] . "  ";
-                echo $_POST["lastname"] . "<br>";
+                echo "<div style=\"text-align:center;font-size:32px;\">" . "<br>Welcome " . $_POST["name"] . "  "  . $_POST["lastname"] ."</div>";
+                // echo "<div style=\"text-align:center;font-size:32px;\">" . $_POST["lastname"] ."</div>" . "<br>";
                 $total = 0.0;
-                $user = 4.0;
+                $user = 0.0;
                 fgetcsv($handle);
                 while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
                     if ($data[1] == ""){
-                        $correct = FALSE;
-                        echo $data[0] . " have blank in credit." . "<br>";
-                        break;
+                        if ($data[0] == ""){
+                            $correct = true;
+                        }else{
+                            $correct = FALSE;
+                            echo "<div style=\"text-align:center;font-size:32px;\">" . $data[0] . " have blank in credit." . "<br>" ."</div>";
+                            break;
+                        }
                     }
                     if ($data[2] == ""){
-                        $correct = FALSE;
-                        echo $data[0] . " have blank in grade." . "<br>";
-                        break;
+                        if ($data[0] == ""){
+                            $correct = true;
+                        }else{
+                            $correct = FALSE;
+                            echo "<div style=\"text-align:center;font-size:32px;\">". $data[0] . " have blank in grade." . "<br>" ."</div>";
+                            break;
+                        }
                     }
                     if ($data[2] > 4 ) {
-                        echo "Data Error Subject " . $data[0] . " grade more than 4 " . "<br>";
+                        echo "<div style=\"text-align:center;font-size:32px;\">" . "Data Error Subject " . $data[0] . " grade more than 4 " . "<br>"."</div>";
                         $correct = FALSE;
                     }
                     elseif ($data[2] < 0 ) {
-                        echo "Data Error Subject " . $data[0] . " grade less than 0 " . "<br>";
+                        echo "<div style=\"text-align:center;font-size:32px;\">" ."Data Error Subject " . $data[0] . " grade less than 0 " . "<br>"."</div>";
                         $correct = FALSE;
                     }
                     $total += (float) $data[1];
@@ -91,9 +110,9 @@
 
                 }
                 if ($correct == true){
-                    echo round($user / $total,2);
+                    echo "<div style=\"text-align:center;font-size:32px;color:red;\">" . "Your GPA = " . round($user / $total,2) ."</div>";
                 }else{
-                    echo "Please Correct the ERROR!!.";
+                    echo "<div style=\"text-align:center;font-size:32px;\">" . "Please Correct the ERROR!!."."</div>";
                 }   
                 fclose($handle);
             }
