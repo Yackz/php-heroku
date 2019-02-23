@@ -17,7 +17,7 @@
             <h2>This web will help you from that!!!!</h2>  
             <form class="flex-container2" action="index.php" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
-                    <label for="name">First Name:</label>
+                    <label style = "font-family: 'Roboto+Condensed', cursive;font-size:33px; color:red;" for="name">First Name:</label>
                     <br>
                     <input type="text" name="name" placeholder="  Name" aria-describedby="name">
                     <small id="name" class="form-text text-muted" style="color: red;">
@@ -25,7 +25,7 @@
                     </small>
                 </div>
                 <div class="form-group">
-                    <label for="lastname">Last Name:</label>
+                    <label style = "font-family: 'Roboto+Condensed', cursive;font-size:33px; color:red;" for="lastname">Last Name:</label>
                     <br>
                     <input type="text" name="lastname" placeholder="  Lastname" aria-describedby="lastname">
                     <small id="lastname" class="form-text text-muted" style="color: red;">
@@ -33,11 +33,9 @@
                     </small>
                 </div>
                 <div class="file">
-                    Image :
-                    <br>
+                    <h3>Image :</h3>
                     <input style="margin-left:22%;" type="file" name="img" id="img" accept=".jpg" ><br>
-                    CSV File :
-                    <br>
+                    <H3>CSV File :</H3>
                     <input style="margin-left:22%;" type="file" name="csv" id="file" accept=".csv"><br><br>
                     <button type="submit" name="submit" class="btn btn-success" style="width:120px;height:50px;margin-left:7%;" >Calculate</button>&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;
